@@ -113,11 +113,35 @@ function Projects() {
 
 // Contact Section
 function Contact() {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const data = {
+      name: form.name.value,
+      email: form.email.value,
+      message: form.message.value
+    };
+    try {
+      const res = await fetch('http://localhost:3001/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (res.ok) {
+        alert('Message sent!');
+        form.reset();
+      } else {
+        alert('Failed to send message.');
+      }
+    } catch (err) {
+      alert('Error sending message.');
+    }
+  };
   return (
     <section id="contact" className="max-w-2xl mx-auto py-20 px-4" aria-labelledby="contact-heading">
       <div className="bg-white rounded-2xl shadow-lg p-8">
         <h2 id="contact-heading" className="text-3xl md:text-4xl font-bold mb-6 text-blue-800">Contact</h2>
-        <form className="flex flex-col space-y-4" name="contact" autoComplete="off" aria-label="Contact form">
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-4" name="contact" autoComplete="off" aria-label="Contact form">
           <label htmlFor="name" className="text-lg text-blue-900">Name</label>
           <input id="name" name="name" type="text" required className="p-3 rounded bg-slate-100 text-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-300" />
           <label htmlFor="email" className="text-lg text-blue-900">Email</label>
