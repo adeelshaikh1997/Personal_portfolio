@@ -113,42 +113,27 @@ function Projects() {
 
 // Contact Section
 function Contact() {
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const data = {
-      name: form.name.value,
-      email: form.email.value,
-      message: form.message.value
-    };
-    try {
-      const res = await fetch('http://localhost:3001/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      if (res.ok) {
-        alert('Message sent!');
-        form.reset();
-      } else {
-        alert('Failed to send message.');
-      }
-    } catch (err) {
-      alert('Error sending message.');
-    }
-  };
   return (
     <section id="contact" className="max-w-2xl mx-auto py-20 px-4" aria-labelledby="contact-heading">
       <div className="bg-white rounded-2xl shadow-lg p-8">
         <h2 id="contact-heading" className="text-3xl md:text-4xl font-bold mb-6 text-blue-800">Contact</h2>
-        <form onSubmit={handleSubmit} className="flex flex-col space-y-4" name="contact" autoComplete="off" aria-label="Contact form">
+        <form
+          action="https://formspree.io/f/xrblpovj"
+          method="POST"
+          className="flex flex-col space-y-4"
+        >
           <label htmlFor="name" className="text-lg text-blue-900">Name</label>
           <input id="name" name="name" type="text" required className="p-3 rounded bg-slate-100 text-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-300" />
+
           <label htmlFor="email" className="text-lg text-blue-900">Email</label>
           <input id="email" name="email" type="email" required className="p-3 rounded bg-slate-100 text-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-300" />
+
           <label htmlFor="message" className="text-lg text-blue-900">Message</label>
           <textarea id="message" name="message" rows="5" required className="p-3 rounded bg-slate-100 text-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-300"></textarea>
-          <button type="submit" className="mt-4 px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-full text-lg font-semibold text-white shadow transition-colors focus:outline-none focus:ring-2 focus:ring-blue-300">Send Message</button>
+
+          <button type="submit" className="mt-4 px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-full text-lg font-semibold text-white shadow transition-colors focus:outline-none focus:ring-2 focus:ring-blue-300">
+            Send Message
+          </button>
         </form>
         <div className="mt-8 text-blue-900 text-center">
           <div className="mb-2"><span className="font-semibold">Email:</span> adeel97@hotmail.com</div>
