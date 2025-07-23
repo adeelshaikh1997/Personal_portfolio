@@ -259,17 +259,48 @@ function Certifications() {
 
 // Outside Work
 function OutsideWork() {
+  const slides = [
+    { src: "images/Banff.jpeg", caption: "Banff National Park in Canada." },
+    { src: "images/Copenhagen.jpeg", caption: "Copenhagen, Denmark." },
+    { src: "images/Gilgit.jpeg", caption: "Gilgit, Pakistan." },
+    { src: "images/Lakecomo.jpeg", caption: "Lake Como, Italy." },
+    { src: "images/Laketahoe.jpeg", caption: "Lake Tahoe, California." },
+    { src: "images/Paris.jpeg", caption: "Paris, France." },
+    { src: "images/Skardu.jpeg", caption: "Skardu, Pakistan." },
+    { src: "images/Sanfran.jpeg", caption: "San Francisco, California." },
+    { src: "images/Madrid.jpeg", caption: "Madrid, Spain." },
+    { src: "images/Italy.jpeg", caption: "Cinque Terre, Italy." }
+  ];
+  const [idx, setIdx] = React.useState(0);
+  const prev = () => setIdx(i => (i - 1 + slides.length) % slides.length);
+  const next = () => setIdx(i => (i + 1) % slides.length);
+
   return (
     <section id="outside-work" className="max-w-4xl mx-auto py-20 px-4" aria-labelledby="outsidework-heading">
       <div className="bg-white rounded-2xl shadow-lg p-8">
         <h2 id="outsidework-heading" className="text-3xl md:text-4xl font-bold mb-6 text-blue-800">Outside Work</h2>
-        <p className="text-lg text-slate-800 mb-4">When I'm not working on data or product challenges, I love to:</p>
+        <div className="flex flex-col items-center mb-6">
+          <div className="w-full max-w-md h-64 bg-slate-100 rounded-lg flex items-center justify-center overflow-hidden shadow">
+            <img
+              src={slides[idx].src}
+              alt={slides[idx].caption}
+              className="object-contain w-full h-full"
+              style={{ maxHeight: "16rem" }}
+            />
+          </div>
+          <div className="mt-4 text-blue-900 font-semibold text-center">{slides[idx].caption}</div>
+          <div className="flex gap-4 mt-4">
+            <button onClick={prev} className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow">❮ Prev</button>
+            <button onClick={next} className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow">Next ❯</button>
+          </div>
+          <div className="mt-2 text-blue-700">{idx + 1} / {slides.length}</div>
+        </div>
         <ul className="list-disc list-inside text-slate-800 text-lg mb-4">
-          <li>Travel and explore new cultures and cuisines</li>
           <li>Play and watch soccer (avid fan!)</li>
           <li>Work on fun coding side projects and hackathons</li>
           <li>Mentor students and early-career professionals</li>
           <li>Read about technology, business, and psychology</li>
+          <li>Enjoy live music and concerts with friends</li>
         </ul>
         <p className="text-slate-700">I believe a balanced life fuels creativity and innovation in my professional work!</p>
       </div>
@@ -280,11 +311,11 @@ function OutsideWork() {
 // Fun Facts/Thoughts Rotator
 function FunFacts() {
   const facts = [
-    'I love snowboarding and have traveled to the Rockies for a 3-month adventure.',
-    'I enjoy hackathons and building fun side projects with friends.',
-    'Soccer is my favorite sport—both playing and watching!',
-    'I’m passionate about mentoring students and early-career professionals.',
-    'I enjoy reading about technology, business, and psychology.'
+    'I love cricket and play often with friends.',
+    'I love vibe coding and this website is a testament to that.',
+    'My favorite soccer team is Chelsea FC!',
+    'I’m passionate about mentoring students and early-career professionals',
+    'I enjoy reading about technology, business, and sports.'
   ];
   const [idx, setIdx] = React.useState(0);
   React.useEffect(() => {
