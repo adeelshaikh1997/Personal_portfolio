@@ -280,12 +280,12 @@ function OutsideWork() {
       <div className="bg-white rounded-2xl shadow-lg p-8">
         <h2 id="outsidework-heading" className="text-3xl md:text-4xl font-bold mb-6 text-blue-800">Outside Work</h2>
         <div className="flex flex-col items-center mb-6">
-          <div className="w-full max-w-md h-64 bg-slate-100 rounded-lg flex items-center justify-center overflow-hidden shadow">
+          <div className="w-full max-w-lg flex items-center justify-center">
             <img
               src={slides[idx].src}
               alt={slides[idx].caption}
-              className="object-contain w-full h-full"
-              style={{ maxHeight: "16rem" }}
+              className="w-full h-auto mx-auto object-contain"
+              style={{ maxHeight: "28rem" }}
             />
           </div>
           <div className="mt-4 text-blue-900 font-semibold text-center">{slides[idx].caption}</div>
