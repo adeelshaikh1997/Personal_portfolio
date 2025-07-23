@@ -22,7 +22,7 @@ function Navbar() {
 function Hero() {
   return (
     <section id="hero" className="pt-36 pb-20 text-center flex flex-col items-center justify-center min-h-[60vh] bg-white">
-      <img src="images/adeel_headshot.jpeg" alt="Adeel Shaikh headshot" className="w-56 h-56 rounded-full object-cover mb-6 shadow-xl border-4 border-blue-600 bg-white" />
+      <img src="images/adeel_headshot.jpeg" alt="Adeel Shaikh headshot" className="w-56 h-46 rounded-full object-cover object-top mb-6 shadow-xl border-4 border-blue-600 bg-white" />
       <h1 className="text-4xl md:text-6xl font-extrabold mb-4 text-blue-900">Hi, I'm <span className="text-blue-600">Adeel Shaikh</span></h1>
       <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-blue-800">Customer Data Manager & Technical Product Owner</h2>
       <p className="max-w-xl mx-auto text-lg md:text-xl mb-8 text-slate-800">
