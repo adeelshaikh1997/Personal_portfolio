@@ -230,11 +230,36 @@ function Skills() {
 // Expandable Certifications
 function Certifications() {
   const certs = [
-    { title: 'Certified Scrum Master (CSM)', details: 'Scrum Alliance' },
-    { title: 'Tableau Desktop Specialist', details: '' },
-    { title: 'Microsoft Certified: Azure Fundamentals', details: '' },
-    { title: 'Six Sigma Yellow Belt', details: '' },
-    { title: 'Other certifications available upon request', details: '' }
+    {
+      title: "Microsoft Certified: Azure Fundamentals",
+      org: "Microsoft",
+      date: "Issued Jul 2025",
+      url: "https://learn.microsoft.com/en-us/users/AdeelShaikh-0841/credentials/A9D940DCE9D5EF2A?ref=https%3A%2F%2Fwww.linkedin.com%2F"
+    },
+    {
+      title: "Hands-On Essentials: Data Warehouse Workshop",
+      org: "Snowflake",
+      date: "Issued Oct 2024",
+      url: "https://achieve.snowflake.com/3e8ffbf1-50a6-46f9-98ef-fe7d07d09426#acc.iOT7zMSI"
+    },
+    {
+      title: "Redpoint Campaign Engineer",
+      org: "Redpoint Global",
+      date: "Issued Sep 2024",
+      url: "https://www.credly.com/badges/tableau-desktop-specialist-link"
+    },
+    {
+      title: "Data Scientist Nanodegree",
+      org: "Udacity",
+      date: "Issued May 2024",
+      url: "https://www.udacity.com/course/data-scientist-nanodegree--nd025"
+    },
+    {
+      title: "Product Management Foundations",
+      org: "Product Institute",
+      date: "Issued Jan 2023",
+      url: "https://productinstitute.com/p/product-management-foundations-overview?_gl=1*vgt46d*_up*MQ..*_gs*MQ..&gclid=Cj0KCQjwkILEBhDeARIsAL--pjwlVl1jUrnkn5FwZxHLn-sKIpDVukOFVOHLdnFfxIjItXVmWtBN3aEaAkDCEALw_wcB&gbraid=0AAAAADmqFrThlODwt9pqyUNLxzl-_63L-"
+    }
   ];
   const [open, setOpen] = React.useState(null);
   return (
@@ -244,11 +269,29 @@ function Certifications() {
         <ul className="space-y-2">
           {certs.map((c, i) => (
             <li key={i}>
-              <button type="button" onClick={() => setOpen(open === i ? null : i)} className="w-full text-left text-lg text-blue-900 font-semibold focus:outline-none flex justify-between items-center">
-                {c.title}
-                <span>{open === i ? '−' : '+'}</span>
+              <button
+                type="button"
+                onClick={() => setOpen(open === i ? null : i)}
+                className="w-full text-left text-lg text-blue-900 font-semibold focus:outline-none flex justify-between items-center"
+              >
+                {c.title} <span>{open === i ? '−' : '+'}</span>
               </button>
-              {open === i && c.details && <div className="pl-4 py-2 text-slate-800 text-base">{c.details}</div>}
+              {open === i && (
+                <div className="pl-4 py-2 text-slate-800 text-base">
+                  <div>{c.org}</div>
+                  <div className="text-sm text-slate-500">{c.date}</div>
+                  {c.url && (
+                    <a
+                      href={c.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block mt-2 text-blue-600 hover:underline font-semibold"
+                    >
+                      Show credential
+                    </a>
+                  )}
+                </div>
+              )}
             </li>
           ))}
         </ul>
